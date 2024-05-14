@@ -34,7 +34,12 @@ interface AccountProfileProps {
 const AccountProfile = ({ user, btnTitle }: AccountProfileProps) => {
   const form = useForm({
     resolver: zodResolver(UserValidation),
-    defaultValues: INITIAL_ACCOUNT_PROFILE,
+    defaultValues: {
+      profile_photo: user?.image || "",
+      name: user?.name || "",
+      username: user?.username || "",
+      bio: user?.bio || "",
+    },
   });
 
   const handleImage = (
